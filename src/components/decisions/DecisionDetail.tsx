@@ -272,7 +272,7 @@ export function DecisionDetail() {
                   {decision.confidence_level || '3'}
                 </span>
                 <span className="text-sm text-muted-foreground">
-                  {CONFIDENCE_LABELS[decision.confidence_level as keyof typeof CONFIDENCE_LABELS] || CONFIDENCE_LABELS['3']}
+                  {CONFIDENCE_LABELS[(decision.confidence_level || '3') as '1' | '2' | '3' | '4' | '5']}
                 </span>
               </div>
             </div>
