@@ -33,9 +33,10 @@ interface DecisionFormProps {
   initialData?: Partial<DecisionFormData>;
   decisionId?: string;
   mode?: 'create' | 'edit';
+  isFirstDecision?: boolean;
 }
 
-export function DecisionForm({ initialData, decisionId, mode = 'create' }: DecisionFormProps) {
+export function DecisionForm({ initialData, decisionId, mode = 'create', isFirstDecision = false }: DecisionFormProps) {
   const navigate = useNavigate();
   const { createDecision, updateDecision } = useDecisions();
   
@@ -108,7 +109,7 @@ export function DecisionForm({ initialData, decisionId, mode = 'create' }: Decis
     } else {
       await createDecision.mutateAsync(data);
     }
-    navigate('/');
+    navigate('/decisions');
   };
 
   const handleSubmit = async () => {
@@ -121,11 +122,20 @@ export function DecisionForm({ initialData, decisionId, mode = 'create' }: Decis
     } else {
       await createDecision.mutateAsync(data);
     }
-    navigate('/');
+    navigate('/decisions');
   };
 
   return (
     <div className="max-w-3xl mx-auto space-y-6 animate-fade-in">
+      {/* Onboarding header for first-time users */}
+      {isFirstDecision && mode === 'create' && (
+        <div className="text-center pb-4">
+          <p className="text-lg text-muted-foreground">
+            Document the decision while it's still clear.
+          </p>
+        </div>
+      )}
+
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-2xl font-display font-bold text-foreground">

@@ -24,11 +24,11 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   const handleSignOut = async () => {
     await signOut();
-    navigate('/auth');
+    navigate('/');
   };
 
   const navItems = [
-    { href: '/', label: 'Decisions', icon: List },
+    { href: '/decisions', label: 'Decisions', icon: List },
     { href: '/decisions/new', label: 'New Decision', icon: Plus },
   ];
 
@@ -44,7 +44,7 @@ export function AppLayout({ children }: AppLayoutProps) {
       <header className="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-sm">
         <div className="container flex h-16 items-center justify-between">
           <div className="flex items-center gap-8">
-            <Link to="/" className="flex items-center gap-2.5">
+            <Link to="/decisions" className="flex items-center gap-2.5">
               <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground">
                 <FileCheck2 className="w-4 h-4" />
               </div>
