@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from 'sonner';
 import { Database } from '@/integrations/supabase/types';
 import { DECISION_TYPE_LABEL } from '@/lib/sales-config';
 
@@ -27,7 +27,6 @@ export interface DecisionFormData {
 
 export function useDecisions() {
   const { user } = useAuth();
-  const { toast } = useToast();
   const queryClient = useQueryClient();
 
   const decisionsQuery = useQuery({
@@ -77,16 +76,13 @@ export function useDecisions() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['decisions'] });
-      toast({
-        title: `${DECISION_TYPE_LABEL} saved`,
+      toast.success(`${DECISION_TYPE_LABEL} saved`, {
         description: `Your ${DECISION_TYPE_LABEL.toLowerCase()} has been recorded successfully.`,
       });
     },
     onError: (error) => {
-      toast({
-        title: `Error saving ${DECISION_TYPE_LABEL.toLowerCase()}`,
+      toast.error(`Error saving ${DECISION_TYPE_LABEL.toLowerCase()}`, {
         description: error.message,
-        variant: 'destructive',
       });
     },
   });
@@ -121,16 +117,13 @@ export function useDecisions() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['decisions'] });
-      toast({
-        title: `${DECISION_TYPE_LABEL} updated`,
+      toast.success(`${DECISION_TYPE_LABEL} updated`, {
         description: 'Your changes have been saved.',
       });
     },
     onError: (error) => {
-      toast({
-        title: `Error updating ${DECISION_TYPE_LABEL.toLowerCase()}`,
+      toast.error(`Error updating ${DECISION_TYPE_LABEL.toLowerCase()}`, {
         description: error.message,
-        variant: 'destructive',
       });
     },
   });
@@ -146,16 +139,13 @@ export function useDecisions() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['decisions'] });
-      toast({
-        title: `${DECISION_TYPE_LABEL} deleted`,
+      toast.success(`${DECISION_TYPE_LABEL} deleted`, {
         description: `The ${DECISION_TYPE_LABEL.toLowerCase()} has been removed.`,
       });
     },
     onError: (error) => {
-      toast({
-        title: `Error deleting ${DECISION_TYPE_LABEL.toLowerCase()}`,
+      toast.error(`Error deleting ${DECISION_TYPE_LABEL.toLowerCase()}`, {
         description: error.message,
-        variant: 'destructive',
       });
     },
   });

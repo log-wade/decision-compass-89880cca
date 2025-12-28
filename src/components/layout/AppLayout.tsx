@@ -10,7 +10,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { FileCheck2, Plus, List, LogOut, User } from 'lucide-react';
+import { FileCheck2, Plus, List, LogOut } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { APP_NAME, DECISION_TYPE_LABEL, DECISION_TYPE_PLURAL } from '@/lib/sales-config';
 
@@ -106,13 +106,6 @@ export function AppLayout({ children }: AppLayoutProps) {
                     <span className="text-xs text-muted-foreground">{user?.email}</span>
                   </div>
                 </div>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                  <Link to="/profile" className="flex items-center">
-                    <User className="mr-2 h-4 w-4" />
-                    Profile
-                  </Link>
-                </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem onClick={handleSignOut} className="text-destructive focus:text-destructive">
                   <LogOut className="mr-2 h-4 w-4" />
