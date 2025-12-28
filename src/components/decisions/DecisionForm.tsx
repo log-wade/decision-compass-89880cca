@@ -142,7 +142,7 @@ export function DecisionForm({ initialData, decisionId, mode = 'create', isFirst
             {mode === 'edit' ? `Edit ${DECISION_TYPE_LABEL}` : `New ${DECISION_TYPE_LABEL}`}
           </h1>
           <p className="text-muted-foreground mt-1">
-            Capture the decision and reasoning for future reference
+            Capture the {DECISION_TYPE_LABEL.toLowerCase()} and reasoning for future reference
           </p>
         </div>
         <div className="flex items-center gap-2">

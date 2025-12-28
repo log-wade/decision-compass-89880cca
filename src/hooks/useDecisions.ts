@@ -3,6 +3,7 @@ import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/contexts/AuthContext';
 import { useToast } from '@/hooks/use-toast';
 import { Database } from '@/integrations/supabase/types';
+import { DECISION_TYPE_LABEL } from '@/lib/sales-config';
 
 type DecisionRecord = Database['public']['Tables']['decision_records']['Row'];
 type DecisionInsert = Database['public']['Tables']['decision_records']['Insert'];
@@ -77,13 +78,13 @@ export function useDecisions() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['decisions'] });
       toast({
-        title: 'Decision saved',
-        description: 'Your decision has been recorded successfully.',
+        title: `${DECISION_TYPE_LABEL} saved`,
+        description: `Your ${DECISION_TYPE_LABEL.toLowerCase()} has been recorded successfully.`,
       });
     },
     onError: (error) => {
       toast({
-        title: 'Error saving decision',
+        title: `Error saving ${DECISION_TYPE_LABEL.toLowerCase()}`,
         description: error.message,
         variant: 'destructive',
       });
@@ -121,13 +122,13 @@ export function useDecisions() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['decisions'] });
       toast({
-        title: 'Decision updated',
+        title: `${DECISION_TYPE_LABEL} updated`,
         description: 'Your changes have been saved.',
       });
     },
     onError: (error) => {
       toast({
-        title: 'Error updating decision',
+        title: `Error updating ${DECISION_TYPE_LABEL.toLowerCase()}`,
         description: error.message,
         variant: 'destructive',
       });
@@ -146,13 +147,13 @@ export function useDecisions() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['decisions'] });
       toast({
-        title: 'Decision deleted',
-        description: 'The decision has been removed.',
+        title: `${DECISION_TYPE_LABEL} deleted`,
+        description: `The ${DECISION_TYPE_LABEL.toLowerCase()} has been removed.`,
       });
     },
     onError: (error) => {
       toast({
-        title: 'Error deleting decision',
+        title: `Error deleting ${DECISION_TYPE_LABEL.toLowerCase()}`,
         description: error.message,
         variant: 'destructive',
       });

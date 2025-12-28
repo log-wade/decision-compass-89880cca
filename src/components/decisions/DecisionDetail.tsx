@@ -19,6 +19,7 @@ import {
   FIELD_LABELS,
   CONFIDENCE_LABELS,
   DECISION_TYPE_LABEL,
+  DECISION_TYPE_PLURAL,
 } from '@/lib/sales-config';
 import {
   ArrowLeft,
@@ -68,14 +69,14 @@ export function DecisionDetail() {
     return (
       <div className="text-center py-12">
         <FileText className="w-12 h-12 mx-auto text-muted-foreground/50 mb-4" />
-        <h2 className="text-xl font-display font-semibold mb-2">Decision not found</h2>
+        <h2 className="text-xl font-display font-semibold mb-2">{DECISION_TYPE_LABEL} not found</h2>
         <p className="text-muted-foreground mb-4">
-          This decision may have been deleted or you don't have access to it.
+          This {DECISION_TYPE_LABEL.toLowerCase()} may have been deleted or you don't have access to it.
         </p>
         <Button asChild>
           <Link to="/">
             <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Decisions
+            Back to {DECISION_TYPE_PLURAL}
           </Link>
         </Button>
       </div>
@@ -136,9 +137,9 @@ export function DecisionDetail() {
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Delete this decision?</AlertDialogTitle>
+                <AlertDialogTitle>Delete this {DECISION_TYPE_LABEL.toLowerCase()}?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete the decision
+                  This action cannot be undone. This will permanently delete the {DECISION_TYPE_LABEL.toLowerCase()}
                   and all associated data.
                 </AlertDialogDescription>
               </AlertDialogHeader>

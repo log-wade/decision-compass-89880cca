@@ -1,6 +1,7 @@
 // Sales/Deals Demo Configuration
 // This configuration is used to customize the Decision Memory app for sales teams
 
+export const APP_NAME = 'Decision Memory';
 export const DECISION_TYPE_LABEL = 'Deal Approval';
 export const DECISION_TYPE_PLURAL = 'Deal Approvals';
 
