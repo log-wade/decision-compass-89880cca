@@ -34,6 +34,7 @@ import {
 } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
+import { RelevantPrecedent } from './RelevantPrecedent';
 
 export function DecisionDetail() {
   const { id } = useParams();
@@ -295,6 +296,9 @@ export function DecisionDetail() {
           </CardContent>
         </Card>
       )}
+
+      {/* Relevant Precedent Section - V2 Context Graph */}
+      <RelevantPrecedent decisionId={id} />
 
       {/* Outcome Section */}
       {decision.outcome && (

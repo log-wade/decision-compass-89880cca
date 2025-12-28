@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      decision_links: {
+        Row: {
+          confidence_score: number | null
+          created_at: string
+          created_by: string | null
+          from_decision_id: string
+          id: string
+          relationship_type: string
+          to_decision_id: string
+        }
+        Insert: {
+          confidence_score?: number | null
+          created_at?: string
+          created_by?: string | null
+          from_decision_id: string
+          id?: string
+          relationship_type: string
+          to_decision_id: string
+        }
+        Update: {
+          confidence_score?: number | null
+          created_at?: string
+          created_by?: string | null
+          from_decision_id?: string
+          id?: string
+          relationship_type?: string
+          to_decision_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "decision_links_from_decision_id_fkey"
+            columns: ["from_decision_id"]
+            isOneToOne: false
+            referencedRelation: "decision_records"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "decision_links_to_decision_id_fkey"
+            columns: ["to_decision_id"]
+            isOneToOne: false
+            referencedRelation: "decision_records"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       decision_records: {
         Row: {
           approvers: string[] | null
