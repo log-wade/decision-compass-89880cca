@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { z } from 'zod';
 import { Loader2, FileCheck2 } from 'lucide-react';
+import { APP_NAME, DECISION_TYPE_PLURAL } from '@/lib/sales-config';
 
 const emailSchema = z.string().email('Please enter a valid email address');
 const passwordSchema = z.string().min(6, 'Password must be at least 6 characters');
@@ -110,8 +111,8 @@ export default function Auth() {
           <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-primary text-primary-foreground mb-4">
             <FileCheck2 className="w-6 h-6" />
           </div>
-          <h1 className="text-2xl font-display font-bold text-foreground">Decision Memory</h1>
-          <p className="text-muted-foreground mt-1">Capture and reflect on important decisions</p>
+          <h1 className="text-2xl font-display font-bold text-foreground">{APP_NAME}</h1>
+          <p className="text-muted-foreground mt-1">Capture and reflect on important {DECISION_TYPE_PLURAL.toLowerCase()}</p>
         </div>
         
         <Card className="shadow-soft border-border/50">

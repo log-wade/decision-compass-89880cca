@@ -3,6 +3,7 @@ import { DecisionForm } from '@/components/decisions/DecisionForm';
 import { AppLayout } from '@/components/layout/AppLayout';
 import { useDecision } from '@/hooks/useDecisions';
 import { Loader2 } from 'lucide-react';
+import { DECISION_TYPE_LABEL } from '@/lib/sales-config';
 
 export default function EditDecision() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ export default function EditDecision() {
     return (
       <AppLayout>
         <div className="text-center py-12">
-          <p className="text-muted-foreground">Decision not found</p>
+          <p className="text-muted-foreground">{DECISION_TYPE_LABEL} not found</p>
         </div>
       </AppLayout>
     );

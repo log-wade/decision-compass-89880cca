@@ -12,6 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { FileCheck2, Plus, List, LogOut, User } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { APP_NAME, DECISION_TYPE_LABEL, DECISION_TYPE_PLURAL } from '@/lib/sales-config';
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -28,8 +29,7 @@ export function AppLayout({ children }: AppLayoutProps) {
   };
 
   const navItems = [
-    { href: '/decisions', label: 'Decisions', icon: List },
-    { href: '/decisions/new', label: 'New Decision', icon: Plus },
+    { href: '/decisions', label: DECISION_TYPE_PLURAL, icon: List },
   ];
 
   const userInitials = user?.user_metadata?.full_name
@@ -48,7 +48,7 @@ export function AppLayout({ children }: AppLayoutProps) {
               <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary text-primary-foreground">
                 <FileCheck2 className="w-4 h-4" />
               </div>
-              <span className="font-display font-semibold text-foreground">Decision Memory</span>
+              <span className="font-display font-semibold text-foreground">{APP_NAME}</span>
             </Link>
             
             <nav className="hidden md:flex items-center gap-1">
@@ -78,7 +78,7 @@ export function AppLayout({ children }: AppLayoutProps) {
             <Button asChild variant="default" size="sm" className="hidden sm:flex">
               <Link to="/decisions/new">
                 <Plus className="w-4 h-4 mr-1" />
-                New Deal Approval
+                New {DECISION_TYPE_LABEL}
               </Link>
             </Button>
             

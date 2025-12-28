@@ -12,7 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { CONTEXT_TAGS, CONFIDENCE_LABELS, DECISION_TYPE_PLURAL } from '@/lib/sales-config';
+import { CONTEXT_TAGS, CONFIDENCE_LABELS, DECISION_TYPE_PLURAL, DECISION_TYPE_LABEL } from '@/lib/sales-config';
 import { Search, Filter, Plus, FileText, Clock, TrendingUp, Loader2 } from 'lucide-react';
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
@@ -89,13 +89,13 @@ export function DecisionList() {
         <div>
           <h1 className="text-2xl font-display font-bold text-foreground">{DECISION_TYPE_PLURAL}</h1>
           <p className="text-muted-foreground">
-            {decisions.length} decision{decisions.length !== 1 ? 's' : ''} recorded
+            {decisions.length} {decisions.length !== 1 ? DECISION_TYPE_PLURAL.toLowerCase() : DECISION_TYPE_LABEL.toLowerCase()} recorded
           </p>
         </div>
         <Button asChild>
           <Link to="/decisions/new">
             <Plus className="w-4 h-4 mr-2" />
-            New Decision
+            New {DECISION_TYPE_LABEL}
           </Link>
         </Button>
       </div>
@@ -106,7 +106,7 @@ export function DecisionList() {
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input
-              placeholder="Search decisions..."
+              placeholder={`Search ${DECISION_TYPE_PLURAL.toLowerCase()}...`}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-9"
@@ -158,18 +158,18 @@ export function DecisionList() {
         <Card className="p-12 text-center">
           <FileText className="w-12 h-12 mx-auto text-muted-foreground/50 mb-4" />
           <h3 className="text-lg font-medium text-foreground mb-2">
-            {decisions.length === 0 ? 'No decisions yet' : 'No matching decisions'}
+            {decisions.length === 0 ? `No ${DECISION_TYPE_PLURAL.toLowerCase()} yet` : `No matching ${DECISION_TYPE_PLURAL.toLowerCase()}`}
           </h3>
           <p className="text-muted-foreground mb-4">
             {decisions.length === 0
-              ? 'Start by recording your first decision.'
+              ? `Start by recording your first ${DECISION_TYPE_LABEL.toLowerCase()}.`
               : 'Try adjusting your search or filters.'}
           </p>
           {decisions.length === 0 && (
             <Button asChild>
               <Link to="/decisions/new">
                 <Plus className="w-4 h-4 mr-2" />
-                Record First Decision
+                Record First {DECISION_TYPE_LABEL}
               </Link>
             </Button>
           )}

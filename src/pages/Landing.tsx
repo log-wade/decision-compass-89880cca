@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { FileCheck2, X } from 'lucide-react';
+import { APP_NAME, DECISION_TYPE_LABEL, DECISION_TYPE_PLURAL } from '@/lib/sales-config';
 
 export default function Landing() {
   const { user } = useAuth();
@@ -24,7 +25,7 @@ export default function Landing() {
             <div className="w-9 h-9 rounded-lg bg-primary flex items-center justify-center">
               <FileCheck2 className="w-5 h-5 text-primary-foreground" />
             </div>
-            <span className="font-display font-semibold text-foreground">Decision Memory</span>
+            <span className="font-display font-semibold text-foreground">{APP_NAME}</span>
           </div>
           {!user && (
             <Button 
@@ -51,10 +52,10 @@ export default function Landing() {
       <section className="container mx-auto px-6 py-24 md:py-32">
         <div className="max-w-3xl mx-auto text-center">
           <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight tracking-tight">
-            Never Lose the "Why" Behind a Decision Again.
+            Never Lose the "Why" Behind a {DECISION_TYPE_LABEL} Again.
           </h1>
           <p className="mt-6 text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto">
-            Capture the reasoning, context, and trade-offs behind critical decisions — before they disappear into email and memory.
+            Capture the reasoning, context, and trade-offs behind critical {DECISION_TYPE_PLURAL.toLowerCase()} — before they disappear into email and memory.
           </p>
           
           <div className="mt-10">
@@ -63,7 +64,7 @@ export default function Landing() {
               onClick={handleCTA}
               className="text-base px-8 py-6 h-auto font-medium"
             >
-              Record Your First Decision
+              Record Your First {DECISION_TYPE_LABEL}
             </Button>
             <p className="mt-4 text-sm text-muted-foreground">
               Takes less than 5 minutes. No setup required.
@@ -81,12 +82,12 @@ export default function Landing() {
         <div className="container mx-auto px-6 py-20">
           <div className="max-w-2xl mx-auto">
             <h2 className="font-display text-2xl font-semibold text-foreground text-center mb-6">
-              What is Decision Memory?
+              What is {APP_NAME}?
             </h2>
             <p className="text-muted-foreground text-center leading-relaxed">
-              Decision Memory is a simple tool for capturing human decisions and reasoning. 
+              {APP_NAME} is a simple tool for capturing human {DECISION_TYPE_PLURAL.toLowerCase()} and reasoning. 
               It's not AI automation or approval enforcement — it creates a searchable record 
-              of how and why important decisions were made. When you need to understand past 
+              of how and why important {DECISION_TYPE_PLURAL.toLowerCase()} were made. When you need to understand past 
               choices, the context is there.
             </p>
           </div>
@@ -123,14 +124,14 @@ export default function Landing() {
               Ready to start?
             </h2>
             <p className="text-muted-foreground mb-8">
-              Document your first decision while it's still clear.
+              Document your first {DECISION_TYPE_LABEL.toLowerCase()} while it's still clear.
             </p>
             <Button 
               size="lg" 
               onClick={handleCTA}
               className="text-base px-8 py-6 h-auto font-medium"
             >
-              Record Your First Decision
+              Record Your First {DECISION_TYPE_LABEL}
             </Button>
           </div>
         </div>
@@ -139,7 +140,7 @@ export default function Landing() {
       {/* Footer */}
       <footer className="border-t border-border/40 py-8">
         <div className="container mx-auto px-6 text-center text-sm text-muted-foreground">
-          © {new Date().getFullYear()} Decision Memory
+          © {new Date().getFullYear()} {APP_NAME}
         </div>
       </footer>
     </div>
